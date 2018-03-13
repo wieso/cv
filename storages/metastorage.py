@@ -26,3 +26,9 @@ class MetaStorage:
     # Установить какой оператор размечает какие данные
     def set_operator(self, operator_id: int, img_hashes: list) -> bool:
         return True
+
+    # Получение информации об авторизованном пользователе
+    def who(self) -> dict:
+        return {
+            'uid': 123
+        }

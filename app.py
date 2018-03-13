@@ -1,4 +1,5 @@
 from users.supervisor import Supervisor
+from users.operator import Operator
 
 
 # пример набора действий супервизора при разметке данных
@@ -31,8 +32,27 @@ def supervisor1():
     visor.set_correct_marked_file(ids[0])
 
 
+# Действия оператора
+def operator1():
+    config = {
+        'db_host': '',
+        'db_port': '',
+        'store_host': '',
+        'store_port': '',
+        'store_type': 'FTP',
+        'user': '',
+        'password': '',
+        'local_path': '/home/amurashkin/Downloads'
+    }
+    operator = Operator(**config)
+
+    # Запуск синхронизации хранилищ
+    operator.update_state()
+
+
 def main():
-    supervisor1()
+    # supervisor1()
+    operator1()
 
 
 if __name__ == "__main__":
