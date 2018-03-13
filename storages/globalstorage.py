@@ -23,3 +23,6 @@ class GlobalStorage:
     def load_files(self, files: list) -> list:
         return []
 
+    # Скачать файлы из глобального хранилища
+    def save_files(self, hashes):
+        return bin(True)

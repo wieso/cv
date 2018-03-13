@@ -36,8 +36,9 @@ class Supervisor(User):
     Для набора изображений назначаем оператора, который будет их размечать
     """
 
-    def set_operator(self, operator_id: int, img_hashes: list):
-        pass
+    def set_operator(self, operator_id: int, img_hashes: list) -> bool:
+        return self.ms.set_operator(operator_id, img_hashes)
+
 
     """
     Получение размеченного изображения. Самого файла, мета данных и данных разметки.

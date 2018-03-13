@@ -22,3 +22,7 @@ class MetaStorage:
     # Получить список операторов
     def get_operators(self) -> dict:
         return {}
+
+    # Установить какой оператор размечает какие данные
+    def set_operator(self, operator_id: int, img_hashes: list) -> bool:
+        return True
