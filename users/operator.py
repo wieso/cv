@@ -18,7 +18,7 @@ class Operator(User):
     def update_state(self):
         try:
             # Получить список неразмеченных файлов для текущего оператора
-            files = map(lambda x: x.id, self.ms.get_files({'operator_id': self.uid, 'status': 'not marked'}))
+            files = [x['id'] for x in self.ms.get_files({'operator_id': self.uid, 'status': 'not marked'})]
             self.ls.sync(self.gs, files)
             return True
         except StorageException:

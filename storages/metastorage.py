@@ -16,8 +16,8 @@ class MetaStorage:
         return self
 
     # Получить информацию о файлах, удовлетворяющих заданным фильтрам
-    def get_files(self, filters: dict) -> dict:
-        return {}
+    def get_files(self, filters: dict) -> list:
+        return [{'id': str(i)} for i in range(0, 10)]
 
     # Получить список операторов
     def get_operators(self) -> dict:

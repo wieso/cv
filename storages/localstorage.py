@@ -20,8 +20,6 @@ class LocalStorage:
             os.makedirs(path, mode=0o777, exist_ok=False)
             self.size = 0
 
-        print(self.size)
-
     def __get_size_local_storage(self):
         size = 0
         for dirpath, dirnames, filenames in os.walk(self.path):
@@ -30,6 +28,23 @@ class LocalStorage:
                 size += os.path.getsize(fp)
         return size
 
+    # Получить список хэшей, которые есть локально
+    def __get_all_hashes(self) -> set:
+        return {str(i) for i in range(0, 20, 2)}
+
     # Синхронизация локального хранилища с глобальным
+    # files_set - файлы, которые необходимо синхронизировать, остальные можно удалять
     def sync(self, gs: GlobalStorage, files_set: list):
-        pass
+        local_files = self.__get_all_hashes()
+        remote_files = set(files_set)
+
+        # Те файлы, которых нет в локальном хранилище
+        only_remote_files = remote_files.difference(local_files)
+
+        # Те файлы, которые можно удалить
+        may_delete_files =  local_files.difference(remote_files)
+
+        print('Файлы в глобальном хранилище ', remote_files)
+        print('Файлы в локальном хранилище ', local_files)
+        print('Файлы, которые необходимо скачать ', only_remote_files)
+        print('Файлы, которые можно удалить ', may_delete_files)
