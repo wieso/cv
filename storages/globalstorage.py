@@ -26,3 +26,6 @@ class GlobalStorage:
     # Скачать файлы из глобального хранилища
     def save_files(self, hashes):
         return bin(True)
+
+    def get_sizes(self, hashes: list) -> dict:
+        return {}
